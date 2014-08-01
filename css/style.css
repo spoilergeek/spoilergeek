@@ -1,0 +1,22 @@
+* { border: 0; list-style: none outside none; margin: 0; outline: 0; padding: 0; }
+html { background: #E9EAEC url("//cdn.tvspoilerguide.com/img/wire.png") repeat 50% 0; }
+body { color: #657B83; font: bold 75%/1.75em DejaRip, Corbel, Sans-Serif; padding: 0 2%; text-align: center; }
+p { padding: 0.4em 0; position: relative; word-wrap: break-word; }
+a, a:link, a:visited { color: #267288; color: #263034; text-decoration: none; }
+a:hover, a:focus, a:active { color: #35515D; color: #4F525A; text-decoration: underline; }
+h1, h2, h3, h4, h5, h6 { font: bold 1em/1.75em DejaRip, Corbel, Sans-Serif; text-transform: uppercase; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#column { background: #FFF; margin: 0 auto; padding: 0 5%; text-align: left; max-width: 90em; }
+td.main { border-top: 1px solid #EEEDE9; padding: 1em 1.25em; }
+td.side { border-top: 1px solid #E0DFDB; padding: 1em 0; text-align: center; width: 4em; }
+td#post { border-top: 1px solid #EEEDE9; color: #263034; font: 1.25em/1.8em DejaRip, Corbel, Sans-Serif; padding: 0.6em 5%; }
+td.link { background: #EEEDE9; border: 1px solid #FFF; padding: 1.25em 0.25em; text-align: center; text-transform: uppercase; }
+#post a { border-bottom: 1px solid #EEEDE9; color: #3B708B; font-weight: bold; padding: 0 0 2px; text-decoration: none; }
+#post img { background: #E0DFDB; padding: 1em; height: auto; position: relative; vertical-align: middle; width: auto; }
+#middle h1 { font: bold 3em/1.25em DejaRip, Corbel, Sans-Serif; text-transform: none; overflow: normal; white-space: normal; }
+#stripe { padding: 2em 0; }
+#footer { border-bottom: 2em solid #E0DFDB; padding: 1em 0 0; text-transform: uppercase; }
+#column table { border-collapse: collapse; border-spacing: 0; table-layout: fixed; }
+#column .date { color: #DC322F; font-weight: bold; text-decoration: none; }
+#column .show { border: 0; color: #24AF3A; text-transform: uppercase; text-decoration: none; }
+#column a.block { background: none; border: 0; display: block; padding: 0; text-decoration: none; }
+#column img.flex { border: 0; display: block; height: auto; position: relative; vertical-align: middle; width: 100%; }
