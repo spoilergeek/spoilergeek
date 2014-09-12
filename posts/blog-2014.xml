@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html>
+<html xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'>
+  <head>
+
+    <b:include data='blog' name='all-head-content'/>
+	<b:if cond='data:blog.url == data:blog.homepageUrl'>
+	  <title><data:blog.title/> | <data:blog.metaDescription/></title>
+	<b:else/>
+	<b:if cond='data:blog.searchLabel'>
+      <title><data:blog.pageName/> Spoilers &amp; Episode Guide | <data:blog.title/></title>
+	  <meta expr:content='data:blog.pageName + &quot; Season Guide &amp; Episode Spoilers&quot;' name='description'/>
+	<b:else/>
+     <title><b:if cond='data:blog.pageName'><data:blog.pageName/> | </b:if><data:blog.title/></title>
+    </b:if></b:if>
+
+    <b:skin><![CDATA[
+
+* { border: 0; list-style: none outside none; margin: 0; outline: 0; padding: 0; }
+
+body { background: #E5E6E7; color: #917D74; font: bold 75%/1.75em Fira-Sans, "Segoe UI", Sans-Serif; text-align: center; }
+
+p { padding: 0 0 1em; position: relative; word-wrap: break-word; }
+a, a:link, a:visited { color: #267288; color: #252627; text-decoration: none; }
+a:hover, a:focus, a:active { color: #35515D; color: #C52427; text-decoration: underline; }
+h1, h2, h3, h4, h5, h6 { font: bold 1em/1.75em Fira-Sans, "Segoe UI", Sans-Serif; text-transform: uppercase; }
+
+#column { background: #252627; margin: 0 auto; text-align: left; max-width: 105em; }
+td.main { border-top: 1px solid #EEEDE9; padding: 1em 1.25em; }
+td.side { border-top: 1px solid #E0DFDB; padding: 1em 0; text-align: center; width: 6em; }
+td.post { border-top: 1px solid #EEEDE9; font: 1.25em/1.6em Fira-Sans, "Segoe UI", Sans-Serif; padding: 1em 5%; }
+
+#topbar { background: #FFF; border-top: 1em solid #917D74; padding: 0.25em 5%; text-transform: uppercase; }
+#middle { background: #FFF; border-top: 2px solid #655751; color: #3A3B3C; padding: 4em 5% 3em; }
+.post a { border-bottom: 1px solid #EEEDE9; color: #267288; font-weight: bold; padding: 0 0 2px; text-decoration: none; }
+.post img { background: #E0DFDB; padding: 1em; height: auto; position: relative; vertical-align: middle; width: auto; }
+
+#middle h1 { font: bold 4em/1.25em Fira-Sans, "Segoe UI", Sans-Serif; text-transform: none; }
+#middle h2 { font: bold 1.25em/1.6em Fira-Sans, "Segoe UI", Sans-Serif; text-transform: uppercase; }
+
+#footer { background: #252627; border-top: 1px solid #212223; padding: 4em 5% 0; text-transform: uppercase; }
+
+#column .date { color: #D22024; font-weight: bold; text-decoration: none; }
+#column .line { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#column table { border-collapse: collapse; border-spacing: 0; table-layout: fixed; }
+#column a.block { background: none; border: 0; display: block; padding: 0; text-decoration: none; }
+#column img.flex { border: 0; display: block; height: auto; position: relative; vertical-align: middle; width: 100%; }
+#column a.inverse { background: none; border: 0; color: #917D74; display: block; padding: 0; text-decoration: none; }
+
+	]]></b:skin>
+
+    <b:if cond='data:blog.isMobile'>
+      <meta content='width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0' name='viewport'/>
+    <b:else/>
+      <meta content='width=1100' name='viewport'/>
+    </b:if>
+
+  </head>
+
+  <body expr:class='&quot;group&quot; + data:blog.mobileClass' expr:id='data:blog.pageType'>
+
+    <b:section id='column' preferred='yes' showaddelement='yes'>
+      <b:widget id='Header1' locked='true' mobile='yes' title='TV Spoiler Guide (Header)' type='Header'>
+        <b:includable id='main'>
+
+          <div class='group' id='topbar'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'><tbody>
+			  <tr class='row' id='linkRow'>
+				<td class='main' style='border: 0;' valign='middle'>
+				  <h4><a class='block' expr:href='data:blog.homepageUrl'><data:description/></a></h4>
+				</td>
+                <td class='side' style='border: 0;' valign='middle'>
+				  <h4><a class='block' expr:href='data:blog.url + &quot;#search&quot;'>Search</a></h4>
+				</td>
+			  </tr>
+			</tbody></table>
+		  </div>  <!-- end#topbar -->
+
+          <div class='group' id='header'>
+			<figure class='img' id='hero'><a class='block' expr:href='data:blog.homepageUrl'><img class='flex' expr:alt='data:title' expr:src='data:sourceUrl' width='100%'/></a></figure>
+		  </div>  <!-- end#header -->
+
+        </b:includable>
+        <b:includable id='description'><data:description/></b:includable>
+        <b:includable id='title'><data:title/></b:includable>
+      </b:widget>
+      <b:widget id='Blog1' locked='true' mobile='yes' title='Blog Posts' type='Blog'>
+        <b:includable id='main' var='top'>
+		 <data:defaultAdStart/>
+
+          <div class='blog-posts hfeed' id='middle'>
+            <table border='0' cellpadding='0' cellspacing='0' width='100%'><tbody>
+             <b:if cond='data:numPosts == 0'><b:include name='404'/><b:else/>  <!-- end#404 -->
+
+              <b:loop values='data:posts' var='post'>
+				<b:if cond='data:post.isFirstPost'>
+
+                  <tr class='row' id='meta'>
+                    <td class='main' valign='middle'><b:include data='post' name='show'/></td>
+					<td class='side' valign='middle'><b:include data='post' name='date'/></td>
+				  </tr>
+
+                  <tr class='row' id='name'>
+                    <td class='main' colspan='2' style='border-width: 0.75em 0 0; padding: 1.25em;' valign='middle'>
+             		  <h1 class='title' itemprop='name'><b:include data='post' name='name'/></h1>
+		   			</td>
+				  </tr>
+
+                  <tr class='row' id='info'>
+                    <td class='main' valign='middle'><b:include data='post' name='airdate'/></td>
+					<td class='side' valign='middle'><b:include data='post' name='formats'/></td>
+				  </tr>
+
+				  <b:if cond='data:post.body'>
+                  	<tr class='row' expr:id='data:post.id'>
+                      <td class='post' colspan='2' itemprop='articleBody' valign='top'><data:post.body/></td>
+                  	</tr>
+                  </b:if>
+
+				<b:else/>  <!-- end#isFirstPost -->
+
+				<b:if cond='data:blog.url == data:blog.homepageUrl'>
+                  <tr class='row' expr:id='data:post.id'>
+					<td class='main' valign='middle'><h3><b:include data='post' name='home-name'/></h3></td>
+					<td class='side' valign='middle'><h4><b:include data='post' name='home-date'/></h4></td>
+			  	  </tr>
+				<b:else/>  <!-- end#isHomepage -->
+
+				<b:if cond='data:post.includeAd'>
+                  <tr class='row' id='name'>
+                    <td class='main' style='border-width: 0.5em 0 0;' valign='middle'>
+             		  <h2><b:include data='post' name='home-name'/></h2>
+		   			</td>
+					<td class='side' style='border-width: 0.5em 0 0;;' valign='middle'>
+             		  <h3><b:include data='post' name='home-date'/></h3>
+		   			</td>
+				  </tr>
+				  <b:if cond='data:post.body'>
+                  	<tr class='row' expr:id='data:post.id'>
+                      <td class='post' colspan='2' itemprop='articleBody' valign='middle'><data:post.body/></td>
+                  	</tr>
+                  </b:if>
+				<b:else/>  <!-- end#includeAd -->
+
+                  <tr class='row' expr:id='data:post.id'>
+					<td class='main' valign='top'><h3><b:include data='post' name='name'/></h3></td>
+					<td class='side' valign='top'><b:include data='post' name='date'/></td>
+			  	  </tr>
+
+				</b:if></b:if></b:if>  <!-- end#posts -->
+			  </b:loop>
+             </b:if>  <!-- end#posts -->
+		  	</tbody></table>
+
+          </div>  <!-- end#middle -->
+          
+         <data:adEnd/>
+        </b:includable>
+        <b:includable id='404' var='post'>
+		  <tr class='group' id='404Head'>
+		    <td class='main' valign='middle'><h4>If you&#39;ve reached this page by accident, I suggest panic.</h4></td>
+		    <td class='side' expr:id='data:blog.blogId + &quot;-404-error&quot;' valign='middle'>404!</td>
+		  </tr>
+		  <tr class='group' id='404Body'>
+            <td class='main' colspan='2' style='border-top: 0.75em solid #EEF0F3; padding: 1.25em;' valign='middle'>
+			  <h1><data:navMessage/></h1>
+			</td>
+		  </tr>
+        </b:includable>
+        <b:includable id='airdate' var='post'>
+		  <b:if cond='data:post.link'>
+			<h4><a class='block' expr:href='data:blog.url'><data:blog.metaDescription/></a></h4>
+          <b:else/>
+			<h4><a class='block' expr:href='data:post.url'>Airdate: <data:post.dateHeader/></a></h4>
+		  </b:if>
+        </b:includable>
+        <b:includable id='backlinkDeleteIcon' var='backlink'/>
+        <b:includable id='backlinks' var='post'/>
+        <b:includable id='comment-form' var='post'/>
+        <b:includable id='commentDeleteIcon' var='comment'/>
+        <b:includable id='comment_count_picker' var='post'/>
+        <b:includable id='comment_picker' var='post'/>
+        <b:includable id='comments' var='post'/>
+        <b:includable id='date' var='post'>
+		<b:if cond='data:blog.url == data:blog.homepageUrl'>
+		  <b:if cond='data:post.isFirstPost'>
+		  	<h4><a class='block' expr:href='data:blog.url'>Feature</a></h4>
+		  <b:else/>
+			<h4><a class='block' expr:href='data:post.url'><data:post.timestamp/></a></h4>
+		  </b:if>
+		<b:else/>
+		  <b:if cond='data:post.link'>
+			<h4><a class='block' expr:href='data:blog.url'>Feature</a></h4>
+          <b:else/>
+			<h4><a class='block' expr:href='data:post.url'><data:post.timestamp/></a></h4>
+		  </b:if>
+		</b:if>
+        </b:includable>
+        <b:includable id='feedLinks'/>
+        <b:includable id='feedLinksBody' var='links'/>
+        <b:includable id='formats' var='post'>
+		  <b:if cond='data:post.link'>
+			<h4><a class='block' expr:href='data:blog.url'>Spoiler</a></h4>
+          <b:else/>
+			<h4><a class='block' expr:href='data:blog.url'>Episode</a></h4>
+		  </b:if>
+        </b:includable>
+        <b:includable id='home-date'>
+		  <b:if cond='data:post.labels'>
+			<b:loop values='data:post.labels' var='label'>
+              <b:if cond='data:label.isLast'>
+				<a class='block' expr:href='data:label.url'><data:post.timestamp/></a>
+			  </b:if>
+            </b:loop>
+          <b:else/>
+			<a class='block' expr:href='data:post.url'><data:post.timestamp/></a>
+		  </b:if>
+        </b:includable>
+        <b:includable id='home-name'>
+		  <b:if cond='data:post.labels'>
+			<b:loop values='data:post.labels' var='label'>
+              <b:if cond='data:label.isLast'>
+				<a class='block' expr:href='data:label.url'><data:post.title/></a>
+			  </b:if>
+            </b:loop>
+          <b:else/>
+			<a class='block' expr:href='data:post.url'><data:post.title/></a>
+		  </b:if>
+        </b:includable>
+        <b:includable id='iframe_comments' var='post'/>
+        <b:includable id='mobile-index-post' var='post'/>
+        <b:includable id='mobile-main' var='top'/>
+        <b:includable id='mobile-nextprev'/>
+        <b:includable id='mobile-post' var='post'/>
+        <b:includable id='name' var='post'>
+		  <b:if cond='data:post.isFirstPost'>
+			<a class='block' expr:href='data:blog.url'><data:post.title/></a>
+		  <b:else/>
+			<b:if cond='data:post.link'>
+			  <a class='block' expr:href='data:post.link'><data:post.title/></a>
+			<b:else/>
+			  <a class='block' expr:href='data:post.url'><data:post.title/></a>
+			</b:if>
+		  </b:if>
+        </b:includable>
+        <b:includable id='nextprev'/>
+        <b:includable id='post' var='post'/>
+        <b:includable id='postQuickEdit' var='post'/>
+        <b:includable id='shareButtons' var='post'/>
+        <b:includable id='show' var='post'>
+		<b:if cond='data:post.link'>
+		  <b:if cond='data:post.labels'>
+			<b:loop values='data:post.labels' var='label'>
+              <b:if cond='data:label.isLast'>
+				<h4><a class='block' expr:href='data:post.link'><data:label.name/></a></h4>
+			  </b:if>
+            </b:loop>
+		  </b:if>
+        <b:else/>
+		  <b:if cond='data:post.labels'>
+			<b:loop values='data:post.labels' var='label'>
+              <b:if cond='data:label.isLast'>
+				<h4><a class='block' expr:href='data:label.url'><data:label.name/> Tv Series</a></h4>
+			  </b:if>
+            </b:loop>
+          <b:else/>
+		  	<b:if cond='data:navMessage'>
+			  <h4><data:navMessage/></h4>
+          	<b:else/>  <!-- end#navMessage -->
+			  <h4><a class='block' expr:href='data:post.url'><data:blog.title/></a></h4>
+		  	</b:if>
+		  </b:if>
+		</b:if>
+        </b:includable>
+        <b:includable id='status-message'/>
+        <b:includable id='threaded-comment-form' var='post'/>
+        <b:includable id='threaded_comment_js' var='post'/>
+        <b:includable id='threaded_comments' var='post'/>
+        <b:includable id='thumb' var='post'>
+
+		  <b:loop index='i' values='data:post.enclosures' var='enclosure'>
+			<b:if cond='data:post.enclosures'>
+			  <b:if cond='data:i == &quot;0&quot;'>
+                <p class='thumb'><a class='block' expr:href='data:blog.url'><img class='flex' expr:alt='data:post.title' expr:src='data:enclosure.url' width='100%'/></a></p>
+			  </b:if>
+			</b:if>
+		  </b:loop>
+
+		  <b:if cond='data:post.link'><b:else/>
+		  	<b:if cond='data:post.dateHeader'>
+           	  <p class='date'>Airdate: <data:post.dateHeader/></p>
+			<b:else/>
+              <p class='meta'><data:blog.metaDescription/></p>
+		  	</b:if>
+		  </b:if>
+
+        </b:includable>
+      </b:widget>
+      <b:widget id='BlogList1' locked='true' mobile='yes' title='Blog Network' type='BlogList'>
+        <b:includable id='main'>
+
+		  <div class='group' id='footer'>
+		    <table border='0' cellpadding='0' cellspacing='0' style='border-bottom: 2em solid #212223;' width='100%'><tbody>
+
+			  <b:loop values='data:items' var='item'>
+			  	<b:if cond='data:item.blogUrl == data:blog.homepageUrl'>
+       		  	  <tr class='row' expr:id='data:item.blogTitle'>
+			  	  	<td class='main' style='border-bottom: 1em solid #212223; border-top: 1px dotted #303030;' valign='middle'>
+					  <h4><a class='inverse' expr:href='data:item.blogUrl'><data:item.itemTitle/></a></h4>
+					</td>
+			  	  	<td class='side' style='border-bottom: 1em solid #212223; border-top: 1px dotted #3B3B3B;' valign='middle'>
+					  <h4><a class='inverse' expr:href='data:item.blogUrl'><b class='date'>#</b><data:item.blogTitle/></a></h4>
+					</td>
+       		  	  </tr>
+			  	</b:if>
+			  </b:loop>
+
+			  <b:loop values='data:items' var='item'>
+			  	<b:if cond='data:item.blogUrl != data:blog.homepageUrl'>
+       		  	  <tr class='row' expr:id='data:item.blogTitle'>
+			  	  	<td class='main' style='border-top: 1px dotted #303030;' valign='middle'>
+					  <h4><a class='inverse' expr:href='data:item.blogUrl'><data:item.itemTitle/></a></h4>
+					</td>
+			  	  	<td class='side' style='border-top: 1px dotted #3B3B3B;' valign='middle'>
+					  <h4><a class='inverse' expr:href='data:item.blogUrl'><b class='date'>#</b><data:item.blogTitle/></a></h4>
+					</td>
+       		  	  </tr>
+			  	</b:if>
+			  </b:loop>
+
+      	  	</tbody></table>
+ 		  </div>  <!-- end#footer -->
+
+		</b:includable>
+      </b:widget>
+    </b:section>
+
+    <b:include data='blog' name='google-analytics' title='stats'/>
+	<script src='//use.typekit.net/szg8bgp.js' type='text/javascript'/>
+	<script type='text/javascript'>try{Typekit.load();}catch(e){}</script>
+
+  </body>
+</html>
